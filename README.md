@@ -1,4 +1,4 @@
-# AWS ECS Hands-on
+# AWS ECS Deploy 
 
 ## Overview
 * Build Docker Image locally
@@ -43,9 +43,8 @@ pip install --user --upgrade awscli
 pip freeze | grep awscli
 ```
 
-## Next Challenge
+## TODO
 * Build automatically by using CodeBuild and Github
 * Deploy to EC2 server automatically by using CodePipeline
 
 
-# aws-ecs-deploy

@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  ecs_test_front:
+    image: ecs_test_front
+    build: 
+      context: ./ecs_test_front
+    ports:
+      - 80:80
