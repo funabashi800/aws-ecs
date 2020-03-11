@@ -53,7 +53,6 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR....
-      - docker-compose --version
       - aws --version
       - $(aws ecr get-login --no-include-email)
   build:
