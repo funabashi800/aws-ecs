@@ -6,6 +6,9 @@
 * Deploy to EC2 server from GUI console
 
 ## ECR
+
+- Container Registry like DockerHub
+
 1. Create AIM user with EC2 container registry full access, and allow pragmatical access to AWS resource
 2. Configure Local AWS CLI profile by adding access key in ~/.aws/config
 3. Create Repository on Elastic Container Registry
@@ -29,6 +32,8 @@ docker push [ecr_url]/[repository]:[version]
 
 ## ECS
 
+- Instance configuration to deploy, Fargate (Totally managed serverless service)
+
 7. Create ECS cluster with a option EC2 Linux + Network
     * Configure Port, machine image, EBS volume, etc as well as the config for EC2 launching setting
 
@@ -36,7 +41,10 @@ docker push [ecr_url]/[repository]:[version]
 
 9. Create a service which describe deployment type (EC2, Fargate), and (Rolling Deploy or Blue/Green)
 
-## Amazon CodeBuild
+## AWS CodeBuild
+
+AWS CodeBuild can automate build process including build docker image and then push to Container Registry
+
 10. Authenticate with Github
 11. Insert buildspec.yml with GUI instead of file
 
@@ -47,7 +55,7 @@ phases:
       - echo Logging in to Amazon ECR....
       - docker-compose --version
       - aws --version
-      - aws ecr get-login-password --region [region] | docker login --username AWS --password-stdin [ecr_url]/[ecr_repo_name]
+      - $(aws ecr get-login --no-include-email)
   build:
     commands:
       - echo Build started on `date`
